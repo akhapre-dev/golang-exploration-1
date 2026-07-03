@@ -1,0 +1,30 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+golang-adk-exploration-1
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of `go env` in a module root
+go.env
+
+# Environment variables (never commit API keys)
+.env
+*.env
+
+# macOS
+.DS_Store
+
+# IDE / editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build outputs
+/bin/
+/dist/
