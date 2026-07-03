@@ -75,7 +75,7 @@ run: ## Run the agent in interactive CLI mode (loads GOOGLE_API_KEY from .env)
 
 run-web: ## Run the agent with the ADK Web UI (loads GOOGLE_API_KEY from .env)
 	@test -f $(ENV_FILE) || (echo "⚠️  $(ENV_FILE) not found — copy .env.example to .env and set GOOGLE_API_KEY"; exit 1)
-	@export $$(grep -v '^\s*#' $(ENV_FILE) | grep -v '^\s*$$' | xargs) && $(GO) run $(CMD) web
+	@export $$(grep -v '^\s*#' $(ENV_FILE) | grep -v '^\s*$$' | xargs) && $(GO) run $(CMD) web webui api
 
 # ── Test ─────────────────────────────────────────────────────
 test: ## Run all tests
