@@ -4,7 +4,7 @@
 # ============================================================
 
 # ── Project config ──────────────────────────────────────────
-MODULE      := github.com/ashishkhapre/golang-exploration-1
+MODULE      := github.com/akhapre-dev/golang-exploration-1
 CMD         := ./cmd/agent
 BINARY_NAME := agent
 BINARY_DIR  := bin

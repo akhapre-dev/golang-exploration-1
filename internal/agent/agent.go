@@ -11,7 +11,7 @@ import (
 	"google.golang.org/adk/v2/model/gemini"
 	"google.golang.org/genai"
 
-	"github.com/ashishkhapre/golang-exploration-1/pkg/config"
+	"github.com/akhapre-dev/golang-exploration-1/pkg/config"
 )
 
 // New constructs and returns a new LLM agent using the provided configuration.

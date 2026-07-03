@@ -1,4 +1,4 @@
-module github.com/ashishkhapre/golang-exploration-1
+module github.com/akhapre-dev/golang-exploration-1
 
 go 1.26.4
 

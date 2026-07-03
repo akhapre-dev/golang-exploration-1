@@ -25,8 +25,8 @@ import (
 	"google.golang.org/adk/v2/cmd/launcher"
 	"google.golang.org/adk/v2/cmd/launcher/full"
 
-	internalagent "github.com/ashishkhapre/golang-exploration-1/internal/agent"
-	"github.com/ashishkhapre/golang-exploration-1/pkg/config"
+	internalagent "github.com/akhapre-dev/golang-exploration-1/internal/agent"
+	"github.com/akhapre-dev/golang-exploration-1/pkg/config"
 )
 
 func main() {
