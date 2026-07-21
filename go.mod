@@ -3,6 +3,7 @@ module github.com/akhapre-dev/golang-exploration-1
 go 1.26.4
 
 require (
+	go.opentelemetry.io/otel v1.43.0
 	google.golang.org/adk/v2 v2.0.0
 	google.golang.org/genai v1.57.0
 )
@@ -35,7 +36,6 @@ require (
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.42.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.68.0 // indirect
-	go.opentelemetry.io/otel v1.43.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.19.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.43.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.43.0 // indirect

@@ -4,10 +4,14 @@ import (
 	"errors"
 	"strings"
 
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"google.golang.org/adk/v2/agent"
 	"google.golang.org/adk/v2/tool"
 	"google.golang.org/adk/v2/tool/functiontool"
 )
+
+var weatherTracer = otel.Tracer("weather-tool")
 
 type WeatherArgs struct {
 	City string `json:"city"`
@@ -19,8 +23,17 @@ type WeatherResults struct {
 }
 
 func GetWeather(ctx agent.Context, args *WeatherArgs) (*WeatherResults, error) {
-	if args == nil || args.City == "" || strings.ToLower(args.City) == "new york" {
-		return nil, errors.New("Valid city is required")
+	_, span := weatherTracer.Start(ctx, "GetWeather")
+	defer span.End()
+
+	if args != nil && args.City != "" {
+		span.SetAttributes(attribute.String("weather.city", args.City))
+	}
+
+	if args == nil || args.City == "" || strings.ToLower(args.City) != "new york" {
+		err := errors.New("Valid city is required")
+		span.RecordError(err)
+		return nil, err
 	}
 	return &WeatherResults{
 		Temperature: 10.5,

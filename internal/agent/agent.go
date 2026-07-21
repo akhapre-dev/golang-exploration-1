@@ -36,6 +36,11 @@ func New(ctx context.Context, cfg config.Config) (adkagent.Agent, error) {
 		return nil, fmt.Errorf("creating timezone tool: %w", err)
 	}
 
+	currencyTool, err := tools.GetCurrencyTool()
+	if err != nil {
+		return nil, fmt.Errorf("creating currency tool: %w", err)
+	}
+
 	a, err := llmagent.New(llmagent.Config{
 		Name:        cfg.AgentName,
 		Model:       model,
@@ -43,6 +48,7 @@ func New(ctx context.Context, cfg config.Config) (adkagent.Agent, error) {
 		Tools: []tool.Tool{
 			weatherTool,
 			timezoneTool,
+			currencyTool,
 		},
 	})
 	if err != nil {

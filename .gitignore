@@ -28,3 +28,5 @@ go.env
 # Build outputs
 /bin/
 /dist/
+agent
+.antigravitycli/

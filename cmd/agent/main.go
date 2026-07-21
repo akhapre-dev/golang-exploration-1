@@ -27,6 +27,7 @@ import (
 
 	internalagent "github.com/akhapre-dev/golang-exploration-1/internal/agent"
 	"github.com/akhapre-dev/golang-exploration-1/pkg/config"
+	_ "google.golang.org/adk/v2/telemetry" // side-effect import: registers OTel providers
 )
 
 func main() {
@@ -34,6 +35,9 @@ func main() {
 
 	// Load configuration from environment variables.
 	cfg := config.Load()
+
+	// Set the environment variable programmatically so that ADK Go v2 captures full LLM request and response content.
+	println("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=", os.Getenv("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT"))
 
 	// Build the ADK agent.
 	a, err := internalagent.New(ctx, cfg)
@@ -47,6 +51,8 @@ func main() {
 	// Build the launcher config.
 	launcherCfg := &launcher.Config{
 		AgentLoader: agentLoader,
+		// TelemetryOptions can be set here with []telemetry.Option values (e.g. telemetry.WithOtelToCloud).
+		// CaptureMessageContent is controlled via the OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT env var.
 	}
 
 	// Launch — supports both console (default) and web sub-launchers.
